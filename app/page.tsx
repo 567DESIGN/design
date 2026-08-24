@@ -165,7 +165,7 @@ function InfoPage() {
             <span>I am well‑versed in AIGC‑driven creative workflows, and hold strong</span>
             <span>aesthetic acumen to produce comprehensive, high‑grade visual deliverables independently.</span>
           </p>
-          <p className="info-contact"><img className="info-portrait" src="/images/3333.jpg" alt="Shijun Peng portrait" /><span>VX 87080780<br/><a href="mailto:xxa8@163.com">EMAIL&nbsp;&nbsp;xxa8@163.com</a></span></p>
+          <div className="info-contact"><div className="info-locations"><p>(GZ)<br/>guangzhou panyu</p><p>(CS)<br/>changsha lugu</p></div><img className="info-portrait" src="/images/3333.jpg" alt="Shijun Peng portrait" /><p>VX 87080780<br/><a href="mailto:xxa8@163.com">EMAIL&nbsp;&nbsp;xxa8@163.com</a></p></div>
         </div>
       </section>
     </main>
@@ -367,6 +367,6 @@ export default function App() {
   const projectId = hash.startsWith("#project/") ? hash.slice(9) : "";
   const project = projects.find((item) => item.id === projectId);
   const page = project ? <ProjectPage project={project} /> : hash === "#info" ? <InfoPage /> : <Home />;
-  const footer = hash === "#info" ? <footer className="site-footer"><div className="site-footer-locations"><p>(GZ)<br/>guangzhou panyu</p><p>(CS)<br/>changsha lugu</p></div><p className="site-footer-copyright">© All rights Reserved by Shijun Peng work</p></footer> : null;
+  const footer = hash === "#info" ? <footer className="site-footer"><p className="site-footer-copyright">© All rights Reserved by Shijun Peng work</p></footer> : null;
   return <><ContactMarquee />{page}{footer}<BackToTopButton /></>;
 }
