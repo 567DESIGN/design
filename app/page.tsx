@@ -371,5 +371,5 @@ export default function App() {
   const projectId = hash.startsWith("#project/") ? hash.slice(9) : "";
   const project = projects.find((item) => item.id === projectId);
   const page = project ? <ProjectPage project={project} /> : hash === "#info" ? <InfoPage /> : <Home />;
-  return <><ContactMarquee />{page}<footer className="site-footer">© All rights Reserved by Shijun Peng work</footer><BackToTopButton /></>;
+  return <><ContactMarquee />{page}<footer className="site-footer"><div className="site-footer-locations"><p>(GZ)<br/>guangzhou panyu</p><p>(CS)<br/>changsha lugu</p></div><p className="site-footer-copyright">© All rights Reserved by Shijun Peng work</p></footer><BackToTopButton /></>;
 }
