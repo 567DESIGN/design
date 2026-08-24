@@ -23,7 +23,8 @@ const projects: Project[] = [
     id: "abitua",
     title: "Abitua",
     year: "2026",
-    cover: "/covers/abitua.png",
+    cover: "/portfolio/abitua/process.mov",
+    coverType: "video",
     start: 3,
     end: 10,
     firstDetail: "/portfolio/abitua/first.png",
@@ -159,7 +160,6 @@ function InfoPage() {
         <SiteNav label="Info navigation" />
         <div className="profile-copy">
           <p>10+ years of experience in visual design<br/>Skilled in composition, layout, and conceptualization<br/>Proficient in Aigc creation with a strong aesthetic sense</p>
-          <p>10+视觉设计工作经验<br/>擅长构图和排版及策划<br/>具备Aigc创作能力和良好的审美</p>
           <p className="info-contact">VX 87080780<br/>CAll 1371731226<br/><a href="mailto:xxa8@163.com">EMAIL&nbsp;&nbsp;xxa8@163.com</a><img className="info-portrait" src="/images/3333.jpg" alt="Shijun Peng portrait" /></p>
         </div>
       </section>

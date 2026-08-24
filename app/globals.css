@@ -21,7 +21,6 @@ img { display: block; }
   grid-template-columns: 1fr 1fr;
   align-items: center;
   background: #fff;
-  border-bottom: 1px solid #000;
   font-size: 16px;
   font-weight: 600;
   line-height: 1;
@@ -50,6 +49,7 @@ img { display: block; }
   width: max-content;
   height: 100%;
   display: flex;
+  flex-wrap: nowrap;
   font-size: 12px;
   font-weight: 600;
   line-height: 1;
@@ -57,6 +57,9 @@ img { display: block; }
   white-space: nowrap;
   animation: contact-marquee 18s linear infinite;
   will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .contact-marquee-group {
@@ -68,6 +71,7 @@ img { display: block; }
   justify-content: space-around;
   gap: 110px;
   padding: 0 55px;
+  transform: translateZ(0);
 }
 
 .contact-marquee-close {
@@ -88,7 +92,10 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
 .has-contact-marquee .profile > .site-nav,
 .has-contact-marquee .project-nav { top: var(--marquee-height); }
 
-@keyframes contact-marquee { to { transform: translate3d(-50%, 0, 0); } }
+@keyframes contact-marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
 
 /* Home */
 .works-index {
@@ -161,10 +168,10 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
 }
 
 .profile-copy p { margin: 0; }
-.info-contact { margin-top: auto !important; }
+.info-contact { margin-top: 0; }
 .info-contact a { text-decoration: none; }
 .info-portrait {
-  width: min(280px, 100%);
+  width: min(220px, 100%);
   height: auto;
   margin-top: 16px;
   object-fit: contain;
@@ -265,7 +272,7 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
   .work-meta { min-height: 34px; padding-top: 8px; font-size: 12px; gap: 6px; }
 
   .profile-copy { margin-top: 24px; gap: 46px; font-size: 12px; }
-  .info-portrait { width: min(220px, 62vw); margin-top: 12px; }
+  .info-portrait { width: min(160px, 48vw); margin-top: 12px; }
 
   .project-details {
     padding: 24px var(--page-gutter);
