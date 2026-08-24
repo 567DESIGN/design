@@ -159,7 +159,16 @@ function InfoPage() {
       <section className="profile">
         <SiteNav label="Info navigation" />
         <div className="profile-copy">
-          <p>Boasting over 10 years of practical experience within visual design, I excel at visual composition, layout design and project planning. I am well‑versed in AIGC‑driven creative workflows, and hold strong aesthetic acumen to produce comprehensive, high‑grade visual deliverables independently.</p>
+          <p className="profile-intro">
+            <span>Boasting over 10 years of practical</span>
+            <span>experience within visual design,</span>
+            <span>I excel at visual composition,</span>
+            <span>layout design and project planning.</span>
+            <span>I am well‑versed in AIGC‑driven</span>
+            <span>creative workflows, and hold strong</span>
+            <span>aesthetic acumen to produce comprehensive,</span>
+            <span>high‑grade visual deliverables independently.</span>
+          </p>
           <p className="info-contact">VX 87080780<br/><a href="mailto:xxa8@163.com">EMAIL&nbsp;&nbsp;xxa8@163.com</a><img className="info-portrait" src="/images/3333.jpg" alt="Shijun Peng portrait" /></p>
         </div>
       </section>

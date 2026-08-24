@@ -168,10 +168,11 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
 }
 
 .profile-copy p { margin: 0; }
+.profile-intro span { display: block; }
 .info-contact { margin-top: 0; }
 .info-contact a { text-decoration: none; }
 .info-portrait {
-  width: min(220px, 100%);
+  width: min(19ch, 100%);
   height: auto;
   margin-top: 16px;
   object-fit: contain;
@@ -272,7 +273,7 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
   .work-meta { min-height: 34px; padding-top: 8px; font-size: 12px; gap: 6px; }
 
   .profile-copy { margin-top: 24px; gap: 46px; font-size: 12px; }
-  .info-portrait { width: min(160px, 48vw); margin-top: 12px; }
+  .info-portrait { width: min(19ch, 48vw); margin-top: 12px; }
 
   .project-details {
     padding: 24px var(--page-gutter);
