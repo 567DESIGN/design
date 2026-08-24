@@ -367,6 +367,6 @@ export default function App() {
   const projectId = hash.startsWith("#project/") ? hash.slice(9) : "";
   const project = projects.find((item) => item.id === projectId);
   const page = project ? <ProjectPage project={project} /> : hash === "#info" ? <InfoPage /> : <Home />;
-  const footer = hash === "#info" ? <footer className="site-footer"><p className="site-footer-copyright">© All rights Reserved by Shijun Peng work</p></footer> : null;
+  const footer = <footer className="site-footer"><p className="site-footer-copyright">© All rights Reserved by Shijun Peng work</p></footer>;
   return <><ContactMarquee />{page}{footer}<BackToTopButton /></>;
 }
