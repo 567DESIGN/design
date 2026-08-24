@@ -170,11 +170,12 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
 .profile-copy p { margin: 0; }
 .profile-intro span { display: block; }
 .info-contact { margin-top: 0; }
+.info-contact > span { display: block; margin-top: 12px; }
 .info-contact a { text-decoration: none; }
 .info-portrait {
   width: min(19ch, 100%);
   height: auto;
-  margin-top: 16px;
+  margin-top: 0;
   object-fit: contain;
   object-position: left top;
 }
@@ -226,7 +227,7 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
   padding: 48px var(--page-gutter) 20px;
   background: #fff;
   color: #000;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 500;
   line-height: 1;
   letter-spacing: -.03em;
@@ -292,7 +293,8 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
   .work-meta { min-height: 34px; padding-top: 8px; font-size: 12px; gap: 6px; }
 
   .profile-copy { margin-top: 24px; gap: 46px; font-size: 12px; }
-  .info-portrait { width: min(19ch, 48vw); margin-top: 12px; }
+  .info-portrait { width: min(19ch, 48vw); margin-top: 0; }
+  .info-contact > span { margin-top: 10px; }
 
   .project-details {
     padding: 24px var(--page-gutter);
@@ -310,7 +312,7 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
   .project-details-copy p { margin-bottom: 24px; }
   .project-longform-image + .project-longform-image { margin-top: 8px; }
 
-  .site-footer { padding: 32px var(--page-gutter) 16px; font-size: 12px; }
+  .site-footer { padding: 32px var(--page-gutter) 16px; }
   .site-footer-locations { gap: 16px; margin-bottom: 40px; }
 
   .back-to-top { width: 44px; height: 44px; }

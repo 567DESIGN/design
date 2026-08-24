@@ -160,16 +160,12 @@ function InfoPage() {
         <SiteNav label="Info navigation" />
         <div className="profile-copy">
           <p className="profile-intro">
-            <span>Boasting over 10 years of practical</span>
-            <span>experience within visual design,</span>
-            <span>I excel at visual composition,</span>
-            <span>layout design and project planning.</span>
-            <span>I am well‑versed in AIGC‑driven</span>
-            <span>creative workflows, and hold strong</span>
-            <span>aesthetic acumen to produce comprehensive,</span>
-            <span>high‑grade visual deliverables independently.</span>
+            <span>Boasting over 10 years of practical experience within visual design,</span>
+            <span>I excel at visual composition, layout design and project planning.</span>
+            <span>I am well‑versed in AIGC‑driven creative workflows, and hold strong</span>
+            <span>aesthetic acumen to produce comprehensive, high‑grade visual deliverables independently.</span>
           </p>
-          <p className="info-contact">VX 87080780<br/><a href="mailto:xxa8@163.com">EMAIL&nbsp;&nbsp;xxa8@163.com</a><img className="info-portrait" src="/images/3333.jpg" alt="Shijun Peng portrait" /></p>
+          <p className="info-contact"><img className="info-portrait" src="/images/3333.jpg" alt="Shijun Peng portrait" /><span>VX 87080780<br/><a href="mailto:xxa8@163.com">EMAIL&nbsp;&nbsp;xxa8@163.com</a></span></p>
         </div>
       </section>
     </main>
@@ -371,5 +367,6 @@ export default function App() {
   const projectId = hash.startsWith("#project/") ? hash.slice(9) : "";
   const project = projects.find((item) => item.id === projectId);
   const page = project ? <ProjectPage project={project} /> : hash === "#info" ? <InfoPage /> : <Home />;
-  return <><ContactMarquee />{page}<footer className="site-footer"><div className="site-footer-locations"><p>(GZ)<br/>guangzhou panyu</p><p>(CS)<br/>changsha lugu</p></div><p className="site-footer-copyright">© All rights Reserved by Shijun Peng work</p></footer><BackToTopButton /></>;
+  const footer = hash === "#info" ? <footer className="site-footer"><div className="site-footer-locations"><p>(GZ)<br/>guangzhou panyu</p><p>(CS)<br/>changsha lugu</p></div><p className="site-footer-copyright">© All rights Reserved by Shijun Peng work</p></footer> : null;
+  return <><ContactMarquee />{page}{footer}<BackToTopButton /></>;
 }
