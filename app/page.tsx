@@ -233,6 +233,17 @@ function BackToTopButton() {
   );
 }
 
+function ContactMarquee() {
+  return (
+    <div className="contact-marquee" aria-label="微信联系方式 VX 13717131226">
+      <div className="contact-marquee-track">
+        <span>VX 13717131226</span><span>VX 13717131226</span><span>VX 13717131226</span><span>VX 13717131226</span>
+        <span aria-hidden="true">VX 13717131226</span><span aria-hidden="true">VX 13717131226</span><span aria-hidden="true">VX 13717131226</span><span aria-hidden="true">VX 13717131226</span>
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
   const [hash, setHash] = useState(window.location.hash);
   useEffect(() => {
@@ -253,5 +264,5 @@ export default function App() {
   const projectId = hash.startsWith("#project/") ? hash.slice(9) : "";
   const project = projects.find((item) => item.id === projectId);
   const page = project ? <ProjectPage project={project} /> : hash === "#info" ? <InfoPage /> : <Home />;
-  return <>{page}<BackToTopButton /></>;
+  return <><ContactMarquee />{page}<BackToTopButton /></>;
 }
