@@ -221,6 +221,17 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
 .habc-lead-image { background: #f1f1f1; }
 .project-longform-image + .project-longform-image { margin-top: 16px; }
 
+/* Shared footer */
+.site-footer {
+  padding: 48px var(--page-gutter) 20px;
+  background: #fff;
+  color: #000;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -.03em;
+}
+
 /* Back to top */
 .back-to-top {
   position: fixed;
@@ -290,6 +301,8 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
   .project-details-meta > div { margin: 0; }
   .project-details-copy p { margin-bottom: 24px; }
   .project-longform-image + .project-longform-image { margin-top: 8px; }
+
+  .site-footer { padding: 32px var(--page-gutter) 16px; font-size: 12px; }
 
   .back-to-top { width: 44px; height: 44px; }
   .back-to-top-icon {
