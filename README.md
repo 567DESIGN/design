@@ -4,9 +4,10 @@ Personal portfolio website for Shijun Peng, a visual, brand and AI designer.
 
 ## Featured projects
 
-- ABITUA - brand identity and applications
-- CREMAISH - e-commerce visual system
-- DAARTEMIS - art direction, exhibition and digital design
+- Abitua — brand identity and applications
+- Habc — brand visual and packaging system
+- Daartemis — art direction, exhibition and digital design
+- Cremaish — e-commerce visual system
 
 ## Development
 
@@ -19,4 +20,4 @@ Create a production build with `pnpm run build`.
 
 ## Stack
 
-React, TypeScript and Vite.
+React 19, TypeScript and Vite 8.

@@ -1,68 +1,60 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type MouseEvent } from "react";
 
 type Project = {
   id: string;
   title: string;
-  category: string;
   year: string;
   cover: string;
-  previews: string[];
+  coverType?: "image" | "video";
   start: number;
   end: number;
+  firstDetail?: string;
   detailImages?: string[];
-  description: string;
-  services: string;
+};
+
+type ProjectMedia = {
+  type: "image" | "video";
+  src: string;
+  alt: string;
 };
 
 const projects: Project[] = [
   {
     id: "abitua",
-    title: "ABITUA",
-    category: "BRAND IDENTITY",
+    title: "Abitua",
     year: "2026",
     cover: "/covers/abitua.png",
-    previews: ["/covers/abitua.png"],
     start: 3,
     end: 10,
-    description: "小众高端女装品牌视觉识别。以 Habitude 与 Attitude 为概念原点，用衬线结构、针线意象与菱形偏移，构建克制且可延展的品牌系统。",
-    services: "LOGOTYPE / GRAPHIC SYSTEM / PACKAGING / APPLICATION",
-  },
-  {
-    id: "habc",
-    title: "HABC",
-    category: "BRAND VISUAL SYSTEM",
-    year: "2026",
-    cover: "/covers/habc.png?v=2",
-    previews: ["/covers/habc.png?v=2"],
-    start: 0,
-    end: 0,
-    detailImages: ["/portfolio/habc/02.png", "/portfolio/habc/03.png", "/portfolio/habc/04.png", "/portfolio/habc/05.png", "/portfolio/habc/06.png", "/portfolio/habc/07.png", "/portfolio/habc/43.png"],
-    description: "HABC 品牌视觉与辅料系统，通过字体、色彩、图形语言与包装应用建立统一、清晰且可持续延展的品牌规范。",
-    services: "LOGOTYPE / VISUAL SYSTEM / PACKAGING",
-  },
-  {
-    id: "daartemis",
-    title: "DAARTEMIS",
-    category: "ART DIRECTION",
-    year: "2023-2025",
-    cover: "/covers/daartemis.png?v=2",
-    previews: ["/covers/daartemis.png?v=2"],
-    start: 18,
-    end: 34,
-    description: "雕塑艺术首饰品牌视觉方向。围绕艺术、珍贵、时尚与独特的品牌定位，完成展览、海报、电商及节日传播等多场景设计。",
-    services: "CAMPAIGN / EXHIBITION / POSTER / DIGITAL DESIGN",
+    firstDetail: "/portfolio/abitua/first.png",
   },
   {
     id: "cremaish",
-    title: "CREMAISH",
-    category: "DIGITAL VISUAL SYSTEM",
-    year: "2025",
-    cover: "/covers/cremaish.png",
-    previews: ["/covers/cremaish.png"],
+    title: "Cremaish",
+    year: "2026",
+    cover: "/portfolio/cremaish/video/03.mov",
+    coverType: "video",
     start: 11,
     end: 17,
-    description: "面向都市女性的品质女装电商视觉系统。通过网格、图像节奏和信息层级，统一首页、主图与详情页的品牌表达。",
-    services: "ART DIRECTION / E-COMMERCE / LAYOUT SYSTEM",
+    firstDetail: "/portfolio/cremaish/first.png",
+  },
+  {
+    id: "habc",
+    title: "Habc",
+    year: "2026",
+    cover: "/covers/habc.png?v=2",
+    start: 0,
+    end: 0,
+    detailImages: ["/portfolio/habc/first.png", "/portfolio/habc/02.png", "/portfolio/habc/03.png", "/portfolio/habc/04.png", "/portfolio/habc/05.png", "/portfolio/habc/06.png", "/portfolio/habc/43.png"],
+  },
+  {
+    id: "daartemis",
+    title: "Daartemis",
+    year: "2023-2025",
+    cover: "/covers/daartemis.png?v=2",
+    start: 18,
+    end: 34,
+    firstDetail: "/portfolio/daartemis/first.png",
   },
 ];
 
@@ -100,14 +92,21 @@ const projectDetails: Record<string, { services: string[]; paragraphs: string[] 
   },
 };
 
-function TopBar({ project, detail = false }: { project?: Project; detail?: boolean }) {
+let preservedScrollPosition: { x: number; y: number } | null = null;
+
+function navigateWithoutScroll(event: MouseEvent<HTMLAnchorElement>, hash: string) {
+  event.preventDefault();
+  preservedScrollPosition = { x: window.scrollX, y: window.scrollY };
+  window.history.pushState(null, "", hash);
+  window.dispatchEvent(new HashChangeEvent("hashchange"));
+}
+
+function SiteNav({ label }: { label: string }) {
   return (
-    <header className={`topbar ${detail ? "topbar--detail" : ""}`}>
-      <a href="#top" className="studio">Shijun Peng</a>
-      <span>{detail ? "SELECTED WORK" : project?.category}</span>
-      <span>{project?.title ?? "VISUAL DESIGNER"}</span>
-      {detail ? <a href="#top">CLOSE</a> : <span>{project?.year}</span>}
-    </header>
+    <nav className="site-nav" aria-label={label}>
+      <a href="#top" onClick={(event) => navigateWithoutScroll(event, "#top")}>Shijun Peng</a>
+      <a href="#info" onClick={(event) => navigateWithoutScroll(event, "#info")}>Info</a>
+    </nav>
   );
 }
 
@@ -115,14 +114,11 @@ function InfoPage() {
   return (
     <main id="info" className="info-page">
       <section className="profile">
-        <nav className="profile-nav" aria-label="Info navigation">
-          <a href="#top">Shijun Peng</a>
-          <a href="#info">Info</a>
-        </nav>
+        <SiteNav label="Info navigation" />
         <div className="profile-copy">
-          <p>10+ years of experience in visual design<br/>Skilled in composition, layout, and conceptualization<br/>Proficient in AIGC creation with a strong aesthetic sense</p>
-          <p>10+视觉设计工作经验<br/>擅长构图和排版及策划<br/>具备AIGC创作能力和良好的审美</p>
-          <p className="info-contact"><a href="mailto:xxa8@163.com">EMAIL: xxa8@163.com</a><br/>WECHAT: 87080780<br/>CALL: 1371731226<img className="info-portrait" src="/images/3333.jpg" alt="Shijun Peng portrait" /></p>
+          <p>10+ years of experience in visual design<br/>Skilled in composition, layout, and conceptualization<br/>Proficient in Aigc creation with a strong aesthetic sense</p>
+          <p>10+视觉设计工作经验<br/>擅长构图和排版及策划<br/>具备Aigc创作能力和良好的审美</p>
+          <p className="info-contact">VX 87080780<br/>CAll 1371731226<br/><a href="mailto:xxa8@163.com">EMAIL&nbsp;&nbsp;xxa8@163.com</a><img className="info-portrait" src="/images/3333.jpg" alt="Shijun Peng portrait" /></p>
         </div>
       </section>
     </main>
@@ -133,23 +129,19 @@ function Home() {
   return (
     <main id="top" className="home">
       <section className="works-index" id="works">
-        <nav className="works-nav" aria-label="Works navigation">
-          <a href="#top">Shijun Peng</a>
-          <a href="#info">Info</a>
-        </nav>
+        <SiteNav label="Works navigation" />
         <div className="works-list">
           {projects.map((project) => (
             <article className="work-card" id={`slide-${project.id}`} key={project.id}>
-              <div className="project-carousel" tabIndex={0} aria-label={`Swipe through ${project.title} covers`}>
-                {project.previews.map((preview, index) => (
-                  <a className="work-cover" href={`#project/${project.id}`} aria-label={`View ${project.title} project, cover ${index + 1}`} key={preview}>
-                    <img src={preview} alt={`${project.title} project cover ${index + 1}`} />
-                  </a>
-                ))}
-              </div>
+              <a className="work-cover" href={`#project/${project.id}`} aria-label={`View ${project.title} project`}>
+                {project.coverType === "video" ? (
+                  <video src={project.cover} autoPlay muted loop playsInline preload="metadata" aria-label={`${project.title} project cover`} />
+                ) : (
+                  <img src={project.cover} alt={`${project.title} project cover`} />
+                )}
+              </a>
               <a className="work-meta" href={`#project/${project.id}`}>
-                <b>{project.title}</b>
-                <span>{project.year}</span>
+                <b>{project.title.toLowerCase()}&nbsp;&nbsp;I&nbsp;&nbsp;{project.year}</b>
               </a>
             </article>
           ))}
@@ -159,27 +151,53 @@ function Home() {
   );
 }
 
-function ProjectProfile({ position }: { position: "top" | "bottom" }) {
+function ProjectNav() {
   return (
-    <section className={`project-profile project-profile--${position}`}>
-      <nav className="project-profile-nav" aria-label={`${position} project navigation`}>
-        <a href="#top">Shijun Peng</a>
-        <a href="#info">Info</a>
-      </nav>
-    </section>
+    <header className="project-nav"><SiteNav label="Project navigation" /></header>
   );
 }
 
 function ProjectPage({ project }: { project: Project }) {
-  const images = useMemo(
-    () => project.detailImages ?? Array.from({ length: project.end - project.start - 1 }, (_, index) => imagePath(project, project.start + index + 2)),
-    [project],
-  );
+  const images = useMemo(() => {
+    if (project.detailImages) return project.detailImages;
+    const projectImages = Array.from({ length: project.end - project.start }, (_, index) => imagePath(project, project.start + index + 1));
+    if (project.firstDetail) projectImages[0] = project.firstDetail;
+    return projectImages;
+  }, [project]);
   const detail = projectDetails[project.id];
+  const media = useMemo<ProjectMedia[]>(() => {
+    const projectImages = images.map((src, index) => ({
+      type: "image" as const,
+      src,
+      alt: `${project.title} portfolio page ${index + 1}`,
+    }));
+
+    if (project.id === "abitua") {
+      return [
+        { type: "video", src: "/portfolio/abitua/process.mov", alt: "Abitua design process video" },
+        { type: "image", src: "/portfolio/abitua/process-01.jpg", alt: "Abitua design process and material samples" },
+        { type: "image", src: "/portfolio/abitua/process-02.jpg", alt: "Abitua logotype construction process" },
+        ...projectImages.slice(1),
+        projectImages[0],
+      ];
+    }
+
+    if (project.id === "cremaish") {
+      return [
+        projectImages[0],
+        { type: "video", src: "/portfolio/cremaish/video/01.mov", alt: "Cremaish fashion video 1" },
+        { type: "video", src: "/portfolio/cremaish/video/02.mov", alt: "Cremaish fashion video 2" },
+        { type: "video", src: "/portfolio/cremaish/video/03.mov", alt: "Cremaish fashion video 3" },
+        ...projectImages.slice(1),
+      ];
+    }
+
+    return projectImages;
+  }, [images, project.id, project.title]);
 
   return (
     <main id="top" className="project-page project-longform" aria-label={`${project.title} complete project`}>
-      <ProjectProfile position="top" />
+      <ProjectNav />
       <section className="project-details" aria-label={`${project.title} information`}>
         <dl className="project-details-meta">
           <div><dt>Client</dt><dd>{project.title.toLowerCase()}</dd></div>
@@ -190,13 +208,10 @@ function ProjectPage({ project }: { project: Project }) {
           {detail.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
         </div>
       </section>
-      {images.map((src, index) => (
-        <img
-          className="project-longform-image"
-          src={src}
-          alt={`${project.title} portfolio page ${index + 1}`}
-          key={src}
-        />
+      {media.map((item) => item.type === "video" ? (
+        <video className="project-longform-image" src={item.src} autoPlay muted loop playsInline preload="metadata" aria-label={item.alt} key={item.src} />
+      ) : (
+        <img className={`project-longform-image${item.src === "/portfolio/habc/first.png" ? " habc-lead-image" : ""}`} src={item.src} alt={item.alt} key={item.src} />
       ))}
     </main>
   );
@@ -228,18 +243,32 @@ function BackToTopButton() {
       aria-label="返回到页面顶部"
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
     >
-      TOP
+      <span className="back-to-top-icon" aria-hidden="true" />
     </button>
   );
 }
 
 function ContactMarquee() {
+  const [isOpen, setIsOpen] = useState(true);
+
+  useEffect(() => {
+    document.body.classList.toggle("has-contact-marquee", isOpen);
+    return () => document.body.classList.remove("has-contact-marquee");
+  }, [isOpen]);
+
+  if (!isOpen) return null;
+
   return (
-    <div className="contact-marquee" aria-label="微信联系方式 VX 13717131226">
+    <div className="contact-marquee" aria-label="微信联系方式 VX 87080780">
       <div className="contact-marquee-track">
-        <span>VX 13717131226</span><span>VX 13717131226</span><span>VX 13717131226</span><span>VX 13717131226</span>
-        <span aria-hidden="true">VX 13717131226</span><span aria-hidden="true">VX 13717131226</span><span aria-hidden="true">VX 13717131226</span><span aria-hidden="true">VX 13717131226</span>
+        <div className="contact-marquee-group">
+          <span>VX 87080780</span><span>VX 87080780</span><span>VX 87080780</span><span>VX 87080780</span>
+        </div>
+        <div className="contact-marquee-group" aria-hidden="true">
+          <span>VX 87080780</span><span>VX 87080780</span><span>VX 87080780</span><span>VX 87080780</span>
+        </div>
       </div>
+      <button className="contact-marquee-close" type="button" aria-label="关闭跑马灯" onClick={() => setIsOpen(false)}>×</button>
     </div>
   );
 }
@@ -250,6 +279,11 @@ export default function App() {
     const onHash = () => {
       setHash(window.location.hash);
       requestAnimationFrame(() => {
+        if (preservedScrollPosition) {
+          window.scrollTo(preservedScrollPosition.x, preservedScrollPosition.y);
+          preservedScrollPosition = null;
+          return;
+        }
         if (window.location.hash.startsWith("#project/")) {
           window.scrollTo({ top: 0, behavior: "instant" });
         } else {
