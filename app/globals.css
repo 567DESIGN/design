@@ -148,7 +148,7 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
 
 /* Info */
 .info-page,
-.profile { min-height: 100svh; background: #fff; }
+.profile { min-height: 0; background: #fff; }
 .profile {
   padding: 0 var(--page-gutter) var(--page-gutter);
   display: flex;
@@ -182,7 +182,7 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
   line-height: 1.5;
 }
 .info-portrait {
-  width: min(19ch, 100%);
+  width: min(320px, 100%);
   height: auto;
   margin-top: 0;
   object-fit: contain;
@@ -295,7 +295,7 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
   .work-meta { min-height: 34px; padding-top: 8px; font-size: 12px; gap: 6px; }
 
   .profile-copy { margin-top: 24px; gap: 46px; font-size: 12px; }
-  .info-portrait { width: min(19ch, 48vw); margin-top: 0; }
+  .info-portrait { width: min(260px, 100%); margin-top: 0; }
   .info-contact > p { margin-top: 10px; }
   .info-locations { width: min(260px, 100%); gap: 16px; margin-bottom: 20px; }
 
