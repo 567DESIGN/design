@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type MouseEvent } from "react";
+import { useEffect, useMemo, useRef, useState, type MouseEvent } from "react";
 
 type Project = {
   id: string;
@@ -110,6 +110,48 @@ function SiteNav({ label }: { label: string }) {
   );
 }
 
+function ViewportVideo({ src, className, label }: { src: string; className?: string; label: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    let sourceLoaded = false;
+
+    const loadObserver = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !sourceLoaded) {
+        video.src = src;
+        sourceLoaded = true;
+        loadObserver.disconnect();
+      }
+    }, { rootMargin: "400px 0px" });
+
+    const playbackObserver = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        if (!sourceLoaded) {
+          video.src = src;
+          sourceLoaded = true;
+        }
+        void video.play().catch(() => undefined);
+      } else {
+        video.pause();
+      }
+    }, { threshold: 0.01 });
+
+    loadObserver.observe(video);
+    playbackObserver.observe(video);
+    return () => {
+      loadObserver.disconnect();
+      playbackObserver.disconnect();
+      video.pause();
+      video.removeAttribute("src");
+      video.load();
+    };
+  }, [src]);
+
+  return <video ref={videoRef} className={className} muted loop playsInline preload="none" aria-label={label} />;
+}
+
 function InfoPage() {
   return (
     <main id="info" className="info-page">
@@ -131,13 +173,19 @@ function Home() {
       <section className="works-index" id="works">
         <SiteNav label="Works navigation" />
         <div className="works-list">
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <article className="work-card" id={`slide-${project.id}`} key={project.id}>
               <a className="work-cover" href={`#project/${project.id}`} aria-label={`View ${project.title} project`}>
                 {project.coverType === "video" ? (
-                  <video src={project.cover} autoPlay muted loop playsInline preload="metadata" aria-label={`${project.title} project cover`} />
+                  <ViewportVideo src={project.cover} label={`${project.title} project cover`} />
                 ) : (
-                  <img src={project.cover} alt={`${project.title} project cover`} />
+                  <img
+                    src={project.cover}
+                    alt={`${project.title} project cover`}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    fetchPriority={index === 0 ? "high" : "auto"}
+                    decoding="async"
+                  />
                 )}
               </a>
               <a className="work-meta" href={`#project/${project.id}`}>
@@ -208,10 +256,18 @@ function ProjectPage({ project }: { project: Project }) {
           {detail.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
         </div>
       </section>
-      {media.map((item) => item.type === "video" ? (
-        <video className="project-longform-image" src={item.src} autoPlay muted loop playsInline preload="metadata" aria-label={item.alt} key={item.src} />
+      {media.map((item, index) => item.type === "video" ? (
+        <ViewportVideo className="project-longform-image" src={item.src} label={item.alt} key={item.src} />
       ) : (
-        <img className={`project-longform-image${item.src === "/portfolio/habc/first.png" ? " habc-lead-image" : ""}`} src={item.src} alt={item.alt} key={item.src} />
+        <img
+          className={`project-longform-image${item.src === "/portfolio/habc/first.png" ? " habc-lead-image" : ""}`}
+          src={item.src}
+          alt={item.alt}
+          loading={index === 0 ? "eager" : "lazy"}
+          fetchPriority={index === 0 ? "high" : "auto"}
+          decoding="async"
+          key={item.src}
+        />
       ))}
     </main>
   );
@@ -221,14 +277,22 @@ function BackToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    let animationFrame = 0;
     const checkPosition = () => {
-      const distanceToBottom = document.documentElement.scrollHeight - window.innerHeight - window.scrollY;
-      setIsVisible(distanceToBottom <= 24 && document.documentElement.scrollHeight > window.innerHeight);
+      if (animationFrame) return;
+      animationFrame = window.requestAnimationFrame(() => {
+        const pageHeight = document.documentElement.scrollHeight;
+        const distanceToBottom = pageHeight - window.innerHeight - window.scrollY;
+        const nextIsVisible = distanceToBottom <= 24 && pageHeight > window.innerHeight;
+        setIsVisible((current) => current === nextIsVisible ? current : nextIsVisible);
+        animationFrame = 0;
+      });
     };
     window.addEventListener("scroll", checkPosition, { passive: true });
     window.addEventListener("resize", checkPosition);
     checkPosition();
     return () => {
+      window.cancelAnimationFrame(animationFrame);
       window.removeEventListener("scroll", checkPosition);
       window.removeEventListener("resize", checkPosition);
     };
