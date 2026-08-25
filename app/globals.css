@@ -43,12 +43,16 @@ body.splash-open .contact-marquee-track { animation-play-state: paused; }
   position: absolute;
   inset: 50% auto auto 50%;
   z-index: 1;
-  font-size: 16px;
+  font-size: clamp(64px, 14vw, 180px);
   font-weight: 600;
-  line-height: 1;
-  letter-spacing: -.055em;
+  line-height: .9;
+  letter-spacing: -.065em;
   white-space: nowrap;
   transform: translate(-50%, -50%);
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, .9),
+    0 0 30px rgba(255, 255, 255, .68),
+    0 0 70px rgba(255, 255, 255, .42);
 }
 
 /* Shared navigation */
@@ -343,7 +347,7 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
 
   .site-nav { font-size: 16px; }
   .site-nav a { transition-duration: .06s; }
-  .opening-splash-name { font-size: 16px; }
+  .opening-splash-name { font-size: clamp(56px, 20vw, 96px); }
   .contact-marquee-track {
     font-size: 12px;
     animation-duration: 15s;

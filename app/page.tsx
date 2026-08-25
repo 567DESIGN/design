@@ -389,7 +389,7 @@ function OpeningSplash({ onComplete }: { onComplete: () => void }) {
       onKeyDown={onKeyDown}
     >
       <div className="opening-splash-rings"><MagicRings speed={1.1} ringCount={7} /></div>
-      <span className="opening-splash-name">Junshi Peng</span>
+      <span className="opening-splash-name">Shijun</span>
     </div>
   );
 }
