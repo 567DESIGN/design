@@ -1,5 +1,6 @@
-import { useEffect, useMemo, useRef, useState, type MouseEvent } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type KeyboardEvent, type MouseEvent } from "react";
 import { Analytics } from "@vercel/analytics/react";
+import MagicRings from "./MagicRings";
 
 type Project = {
   id: string;
@@ -343,8 +344,52 @@ function ContactMarquee() {
   );
 }
 
+function OpeningSplash({ onComplete }: { onComplete: () => void }) {
+  const [isLeaving, setIsLeaving] = useState(false);
+
+  const beginExit = useCallback(() => setIsLeaving(true), []);
+
+  useEffect(() => {
+    document.body.classList.add("splash-open");
+    const autoEnterTimer = window.setTimeout(beginExit, 4500);
+    return () => {
+      window.clearTimeout(autoEnterTimer);
+      document.body.classList.remove("splash-open");
+    };
+  }, [beginExit]);
+
+  useEffect(() => {
+    if (!isLeaving) return;
+    const exitTimer = window.setTimeout(onComplete, 500);
+    return () => window.clearTimeout(exitTimer);
+  }, [isLeaving, onComplete]);
+
+  const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      beginExit();
+    }
+  };
+
+  return (
+    <div
+      className={`opening-splash${isLeaving ? " is-leaving" : ""}`}
+      role="button"
+      tabIndex={0}
+      aria-label="进入 Shijun Peng 作品集首页"
+      onClick={beginExit}
+      onKeyDown={onKeyDown}
+    >
+      <div className="opening-splash-rings"><MagicRings speed={1.1} ringCount={7} /></div>
+      <span className="opening-splash-name">Shijun Peng</span>
+      <span className="opening-splash-enter">Enter</span>
+    </div>
+  );
+}
+
 export default function App() {
   const [hash, setHash] = useState(window.location.hash);
+  const [showSplash, setShowSplash] = useState(true);
   useEffect(() => {
     const onHash = () => {
       setHash(window.location.hash);
@@ -369,5 +414,12 @@ export default function App() {
   const project = projects.find((item) => item.id === projectId);
   const page = project ? <ProjectPage project={project} /> : hash === "#info" ? <InfoPage /> : <Home />;
   const footer = <footer className="site-footer"><p className="site-footer-copyright">© All rights Reserved by Shijun Peng work</p></footer>;
-  return <><ContactMarquee />{page}{footer}<BackToTopButton /><Analytics route={hash || "#top"} path={`${window.location.pathname}${hash || "#top"}`} /></>;
+  const enterHome = useCallback(() => {
+    window.history.replaceState(null, "", "#top");
+    setHash("#top");
+    window.scrollTo({ top: 0, behavior: "instant" });
+    setShowSplash(false);
+  }, []);
+
+  return <>{showSplash && <OpeningSplash onComplete={enterHome} />}<ContactMarquee />{page}{footer}<BackToTopButton /><Analytics route={hash || "#top"} path={`${window.location.pathname}${hash || "#top"}`} /></>;
 }

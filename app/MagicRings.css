@@ -1,0 +1,11 @@
+.magic-rings-container,
+.magic-rings-container canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.magic-rings-fallback {
+  background: radial-gradient(circle, transparent 14%, #fff 14.5%, transparent 15.5%, transparent 24%, #fff 24.5%, transparent 25.5%);
+  opacity: .45;
+}
