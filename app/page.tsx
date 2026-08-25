@@ -240,7 +240,6 @@ function ProjectPage({ project }: { project: Project }) {
         { type: "image", src: "/portfolio/abitua/process-02-bw.png", alt: "Abitua logotype construction process" },
         { type: "image", src: "/portfolio/abitua/logo-page.png", alt: "Abitua logo design" },
         { type: "image", src: "/portfolio/abitua/graphic-page.png", alt: "Abitua graphic design system" },
-        { type: "image", src: "/portfolio/abitua/knitwear-label.png", alt: "Abitua knitwear garment label" },
         ...replacementImages,
       ];
     }
