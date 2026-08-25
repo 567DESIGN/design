@@ -266,6 +266,14 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
 .habc-lead-image { background: #f1f1f1; }
 .project-longform-image + .project-longform-image { margin-top: 16px; }
 
+@media (min-width: 761px) {
+  .project-longform img.project-longform-image {
+    width: auto;
+    max-width: calc(100% - 36px);
+    margin-left: 18px;
+  }
+}
+
 /* Shared footer */
 .site-footer {
   padding: 48px var(--page-gutter) 20px;
