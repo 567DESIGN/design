@@ -197,7 +197,7 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
 .info-page,
 .profile { min-height: 0; background: #fff; }
 .profile {
-  padding: 0 var(--page-gutter) var(--page-gutter);
+  padding: 0 var(--page-gutter) 64px;
   display: flex;
   flex-direction: column;
 }
@@ -356,6 +356,7 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
   .work-meta { min-height: 34px; padding-top: 8px; font-size: 12px; gap: 6px; }
 
   .profile-copy { margin-top: 24px; gap: 46px; font-size: 12px; }
+  .profile { padding-bottom: 46px; }
   .info-portrait { width: min(260px, 100%); margin-top: 0; }
   .info-contact > p { margin-top: 10px; }
   .info-locations { width: min(260px, 100%); gap: 16px; margin-bottom: 10px; }
