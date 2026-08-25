@@ -228,12 +228,18 @@ function ProjectPage({ project }: { project: Project }) {
     }));
 
     if (project.id === "abitua") {
+      const replacementImages: ProjectMedia[] = [
+        { type: "image", src: "/portfolio/abitua/replacement-01.png", alt: "Abitua hang tag" },
+        { type: "image", src: "/portfolio/abitua/replacement-02.png", alt: "Abitua fashion campaign" },
+        { type: "image", src: "/portfolio/abitua/replacement-03.png", alt: "Abitua packaging" },
+        { type: "image", src: "/portfolio/abitua/replacement-04.png", alt: "Abitua garment labels" },
+      ];
       return [
         { type: "video", src: "/portfolio/abitua/process.mov", alt: "Abitua design process video" },
         { type: "image", src: "/portfolio/abitua/process-01.jpg", alt: "Abitua design process and material samples" },
         { type: "image", src: "/portfolio/abitua/process-02.jpg", alt: "Abitua logotype construction process" },
-        ...projectImages.slice(1),
-        projectImages[0],
+        ...replacementImages,
+        ...projectImages.slice(4),
       ];
     }
 
