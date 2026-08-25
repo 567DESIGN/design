@@ -361,13 +361,16 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
     gap: 24px;
   }
   .project-details-meta {
-    display: block;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+    gap: var(--page-gutter);
   }
   .project-details-meta,
   .project-details-copy { font-size: 12px; }
   .project-details-meta { line-height: 1.4; }
-  .project-details-meta > div { margin: 0 0 12px; }
-  .project-details-meta > div:last-child { margin-bottom: 0; }
+  .project-details-meta > div,
+  .project-details-meta > div:last-child { margin: 0; }
   .project-details-copy p { margin-bottom: 24px; }
   .project-media { margin-top: 24px; }
   .project-longform-image + .project-longform-image { margin-top: 8px; }
