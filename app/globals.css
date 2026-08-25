@@ -246,9 +246,9 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
 .project-details {
   padding: 20px 18px;
   display: grid;
-  grid-template-columns: 30% 1fr;
+  grid-template-columns: 160px minmax(0, 1fr);
   align-content: start;
-  gap: 24px;
+  gap: 18px;
   background: #fff;
   color: #111;
   line-height: normal;
@@ -356,8 +356,8 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
 
   .project-details {
     padding: 24px var(--page-gutter);
-    grid-template-columns: 30% minmax(0, 1fr);
-    gap: 12px;
+    grid-template-columns: 110px minmax(0, 1fr);
+    gap: var(--page-gutter);
   }
   .project-details-meta {
     display: block;
