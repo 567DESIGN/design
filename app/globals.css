@@ -2,6 +2,7 @@
   --page-gutter: 11px;
   --nav-height: 57px;
   --marquee-height: 57px;
+  --content-max: 1440px;
   font-family: Arial, Helvetica, "PingFang SC", sans-serif;
   color: #000;
   background: #fff;
@@ -150,7 +151,9 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
 
 .works-list {
   width: 100%;
-  max-width: 1440px;
+  max-width: var(--content-max);
+  margin-right: auto;
+  margin-left: auto;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   column-gap: 11px;
@@ -244,6 +247,10 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
 }
 
 .project-details {
+  width: 100%;
+  max-width: var(--content-max);
+  margin-right: auto;
+  margin-left: auto;
   padding: 20px 18px;
   display: grid;
   grid-template-columns: 160px minmax(0, 1fr);
@@ -274,15 +281,9 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
 .project-details-main { min-width: 0; }
 .project-media { margin-top: 42px; line-height: 0; }
 .project-longform-image { display: block; width: 100%; height: auto; margin: 0; }
+.project-longform img.project-longform-image { width: auto; max-width: 100%; }
 .habc-lead-image { background: #f1f1f1; }
 .project-longform-image + .project-longform-image { margin-top: 16px; }
-
-@media (min-width: 761px) {
-  .project-longform img.project-longform-image {
-    width: auto;
-    max-width: 100%;
-  }
-}
 
 /* Shared footer */
 .site-footer {
