@@ -158,7 +158,7 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   column-gap: 11px;
-  row-gap: 72px;
+  row-gap: 40px;
   padding: 20px 0 72px;
 }
 
@@ -181,7 +181,6 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
   image-rendering: auto;
 }
 .work-meta {
-  min-height: 44px;
   padding-top: 12px;
   display: block;
   font-size: 16px;
@@ -350,10 +349,10 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
 
   .works-list {
     grid-template-columns: 1fr;
-    row-gap: 42px;
+    row-gap: 24px;
     padding: 12px 0 46px;
   }
-  .work-meta { min-height: 34px; padding-top: 8px; font-size: 12px; gap: 6px; }
+  .work-meta { padding-top: 8px; font-size: 12px; gap: 6px; }
 
   .profile-copy { margin-top: 24px; gap: 46px; font-size: 12px; }
   .profile { padding-bottom: 46px; }
