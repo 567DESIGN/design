@@ -424,8 +424,10 @@ export default function App() {
   const enterHome = useCallback(() => {
     window.history.replaceState(null, "", "#top");
     setHash("#top");
-    window.scrollTo({ top: 0, behavior: "instant" });
     setShowSplash(false);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: "instant" }));
+    });
   }, []);
 
   return <>{showSplash && <OpeningSplash onComplete={enterHome} />}<ContactMarquee />{page}{footer}<BackToTopButton /><Analytics route={hash || "#top"} path={`${window.location.pathname}${hash || "#top"}`} /></>;

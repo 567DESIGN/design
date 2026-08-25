@@ -3,6 +3,7 @@
   --nav-height: 57px;
   --marquee-height: 57px;
   --content-max: 720px;
+  --section-gap: 20px;
   font-family: Arial, Helvetica, "PingFang SC", sans-serif;
   color: #000;
   background: #fff;
@@ -150,6 +151,8 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
   background: #fff;
 }
 
+.works-index > .site-nav { margin-bottom: var(--section-gap); }
+
 .works-list {
   width: 100%;
   max-width: var(--content-max);
@@ -159,7 +162,7 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
   grid-template-columns: repeat(2, minmax(0, 1fr));
   column-gap: 11px;
   row-gap: 40px;
-  padding: 20px 0 72px;
+  padding: 0 0 72px;
 }
 
 .work-card { min-width: 0; }
@@ -205,7 +208,7 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
   width: 100%;
   max-width: var(--content-max);
   flex: 1;
-  margin: 20px auto 0;
+  margin: var(--section-gap) auto 0;
   display: flex;
   flex-direction: column;
   gap: 64px;
@@ -253,7 +256,7 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
   max-width: var(--content-max);
   margin-right: auto;
   margin-left: auto;
-  padding: 20px 18px;
+  padding: var(--section-gap) 18px;
   display: grid;
   grid-template-columns: 160px minmax(0, 1fr);
   align-content: start;
@@ -335,6 +338,7 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
     --page-gutter: 10px;
     --nav-height: 48px;
     --marquee-height: 48px;
+    --section-gap: 12px;
   }
 
   .site-nav { font-size: 16px; }
@@ -350,18 +354,19 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
   .works-list {
     grid-template-columns: 1fr;
     row-gap: 24px;
-    padding: 12px 0 46px;
+    padding: 0 0 46px;
   }
+  .works-index > .site-nav { margin-bottom: var(--section-gap); }
   .work-meta { padding-top: 8px; font-size: 12px; gap: 6px; }
 
-  .profile-copy { margin-top: 24px; gap: 46px; font-size: 12px; }
+  .profile-copy { gap: 46px; font-size: 12px; }
   .profile { padding-bottom: 46px; }
   .info-portrait { width: min(260px, 100%); margin-top: 0; }
   .info-contact > p { margin-top: 10px; }
   .info-locations { width: min(260px, 100%); gap: 16px; margin-bottom: 10px; }
 
   .project-details {
-    padding: 24px var(--page-gutter);
+    padding: var(--section-gap) var(--page-gutter) 24px;
     grid-template-columns: 1fr;
     gap: 24px;
   }
