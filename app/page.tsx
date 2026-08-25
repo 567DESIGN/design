@@ -259,23 +259,27 @@ function ProjectPage({ project }: { project: Project }) {
           <div><dt>Service</dt><dd>{detail.services.map((service) => <span key={service}>{service}</span>)}</dd></div>
           <div><dt>Partner</dt><dd>彭世俊</dd></div>
         </dl>
-        <div className="project-details-copy">
-          {detail.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+        <div className="project-details-main">
+          <div className="project-details-copy">
+            {detail.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+          </div>
+          <div className="project-media">
+            {media.map((item, index) => item.type === "video" ? (
+              <ViewportVideo className="project-longform-image" src={item.src} label={item.alt} key={item.src} />
+            ) : (
+              <img
+                className={`project-longform-image${item.src === "/portfolio/habc/first.png" ? " habc-lead-image" : ""}`}
+                src={item.src}
+                alt={item.alt}
+                loading={index === 0 ? "eager" : "lazy"}
+                fetchPriority={index === 0 ? "high" : "auto"}
+                decoding="async"
+                key={item.src}
+              />
+            ))}
+          </div>
         </div>
       </section>
-      {media.map((item, index) => item.type === "video" ? (
-        <ViewportVideo className="project-longform-image" src={item.src} label={item.alt} key={item.src} />
-      ) : (
-        <img
-          className={`project-longform-image${item.src === "/portfolio/habc/first.png" ? " habc-lead-image" : ""}`}
-          src={item.src}
-          alt={item.alt}
-          loading={index === 0 ? "eager" : "lazy"}
-          fetchPriority={index === 0 ? "high" : "auto"}
-          decoding="async"
-          key={item.src}
-        />
-      ))}
     </main>
   );
 }
