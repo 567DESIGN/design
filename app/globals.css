@@ -263,7 +263,7 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
   letter-spacing: -.03em;
 }
 
-.project-details-meta { line-height: 1.45; }
+.project-details-meta { line-height: 2; }
 .project-details-meta > div { margin-bottom: 22px; }
 .project-details-meta dt { margin-bottom: 2px; color: #aaa; }
 .project-details-meta dd { margin: 0; }
@@ -365,7 +365,7 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
   }
   .project-details-meta,
   .project-details-copy { font-size: 12px; }
-  .project-details-meta { line-height: 1.4; }
+  .project-details-meta { line-height: 2; }
   .project-details-meta > div { margin: 0 0 12px; }
   .project-details-meta > div:last-child { margin-bottom: 0; }
   .project-details-copy p { margin-bottom: 24px; }

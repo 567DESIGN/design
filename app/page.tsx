@@ -237,7 +237,7 @@ function ProjectPage({ project }: { project: Project }) {
       return [
         { type: "video", src: "/portfolio/abitua/process.mov", alt: "Abitua design process video" },
         { type: "image", src: "/portfolio/abitua/process-01.jpg", alt: "Abitua design process and material samples" },
-        { type: "image", src: "/portfolio/abitua/process-02.jpg", alt: "Abitua logotype construction process" },
+        { type: "image", src: "/portfolio/abitua/process-02-bw.png", alt: "Abitua logotype construction process" },
         ...replacementImages,
         ...projectImages.slice(4),
       ];
@@ -336,13 +336,13 @@ function ContactMarquee() {
   if (!isOpen) return null;
 
   return (
-    <div className="contact-marquee" aria-label="微信联系方式 VX 87080780">
+    <div className="contact-marquee" aria-label="Visual Designer">
       <div className="contact-marquee-track">
         <div className="contact-marquee-group">
-          <span>VX 87080780</span><span>VX 87080780</span><span>VX 87080780</span><span>VX 87080780</span>
+          <span>Visual Designer</span><span>Visual Designer</span><span>Visual Designer</span><span>Visual Designer</span>
         </div>
         <div className="contact-marquee-group" aria-hidden="true">
-          <span>VX 87080780</span><span>VX 87080780</span><span>VX 87080780</span><span>VX 87080780</span>
+          <span>Visual Designer</span><span>Visual Designer</span><span>Visual Designer</span><span>Visual Designer</span>
         </div>
       </div>
       <button className="contact-marquee-close" type="button" aria-label="关闭跑马灯" onClick={() => setIsOpen(false)}>×</button>
