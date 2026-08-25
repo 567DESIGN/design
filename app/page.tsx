@@ -284,24 +284,20 @@ function BackToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    let animationFrame = 0;
-    const checkPosition = () => {
-      if (animationFrame) return;
-      animationFrame = window.requestAnimationFrame(() => {
-        const pageHeight = document.documentElement.scrollHeight;
-        const distanceToBottom = pageHeight - window.innerHeight - window.scrollY;
-        const nextIsVisible = distanceToBottom <= 24 && pageHeight > window.innerHeight;
-        setIsVisible((current) => current === nextIsVisible ? current : nextIsVisible);
-        animationFrame = 0;
-      });
+    let inactivityTimer = 0;
+    const scheduleVisibility = () => {
+      window.clearTimeout(inactivityTimer);
+      setIsVisible(false);
+      inactivityTimer = window.setTimeout(() => setIsVisible(true), 3000);
     };
-    window.addEventListener("scroll", checkPosition, { passive: true });
-    window.addEventListener("resize", checkPosition);
-    checkPosition();
+
+    const activityEvents: (keyof WindowEventMap)[] = ["scroll", "pointerdown", "touchstart", "keydown"];
+    activityEvents.forEach((eventName) => window.addEventListener(eventName, scheduleVisibility, { passive: true }));
+    scheduleVisibility();
+
     return () => {
-      window.cancelAnimationFrame(animationFrame);
-      window.removeEventListener("scroll", checkPosition);
-      window.removeEventListener("resize", checkPosition);
+      window.clearTimeout(inactivityTimer);
+      activityEvents.forEach((eventName) => window.removeEventListener(eventName, scheduleVisibility));
     };
   }, []);
 
