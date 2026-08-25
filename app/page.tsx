@@ -229,10 +229,10 @@ function ProjectPage({ project }: { project: Project }) {
 
     if (project.id === "abitua") {
       const replacementImages: ProjectMedia[] = [
-        { type: "image", src: "/portfolio/abitua/replacement-01.png", alt: "Abitua hang tag" },
-        { type: "image", src: "/portfolio/abitua/replacement-02.png", alt: "Abitua fashion campaign" },
         { type: "image", src: "/portfolio/abitua/replacement-03.png", alt: "Abitua packaging" },
+        { type: "image", src: "/portfolio/abitua/replacement-01.png", alt: "Abitua hang tag" },
         { type: "image", src: "/portfolio/abitua/replacement-04.png", alt: "Abitua garment labels" },
+        { type: "image", src: "/portfolio/abitua/replacement-02.png", alt: "Abitua fashion campaign" },
       ];
       return [
         { type: "video", src: "/portfolio/abitua/process.mov", alt: "Abitua design process video" },
