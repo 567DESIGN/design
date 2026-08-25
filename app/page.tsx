@@ -239,7 +239,6 @@ function ProjectPage({ project }: { project: Project }) {
         { type: "image", src: "/portfolio/abitua/process-01.jpg", alt: "Abitua design process and material samples" },
         { type: "image", src: "/portfolio/abitua/process-02-bw.png", alt: "Abitua logotype construction process" },
         ...replacementImages,
-        ...projectImages.slice(4),
       ];
     }
 
