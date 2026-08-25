@@ -43,7 +43,7 @@ body.splash-open .contact-marquee-track { animation-play-state: paused; }
   position: absolute;
   inset: 50% auto auto 50%;
   z-index: 1;
-  font-size: clamp(64px, 14vw, 180px);
+  font-size: clamp(48px, 10vw, 128px);
   font-weight: 600;
   line-height: .9;
   letter-spacing: -.065em;
@@ -347,7 +347,7 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
 
   .site-nav { font-size: 16px; }
   .site-nav a { transition-duration: .06s; }
-  .opening-splash-name { font-size: clamp(56px, 20vw, 96px); }
+  .opening-splash-name { font-size: clamp(40px, 13vw, 68px); }
   .contact-marquee-track {
     font-size: 12px;
     animation-duration: 15s;

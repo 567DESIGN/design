@@ -341,10 +341,10 @@ function ContactMarquee() {
     <div className="contact-marquee" aria-label="Visual Designer">
       <div className="contact-marquee-track">
         <div className="contact-marquee-group">
-          <span>↙ Visual Designer ↘</span><span>↙ Visual Designer ↘</span><span>↙ Visual Designer ↘</span><span>↙ Visual Designer ↘</span>
+          <span>Visual Designer</span><span>Visual Designer</span><span>Visual Designer</span><span>Visual Designer</span>
         </div>
         <div className="contact-marquee-group" aria-hidden="true">
-          <span>↙ Visual Designer ↘</span><span>↙ Visual Designer ↘</span><span>↙ Visual Designer ↘</span><span>↙ Visual Designer ↘</span>
+          <span>Visual Designer</span><span>Visual Designer</span><span>Visual Designer</span><span>Visual Designer</span>
         </div>
       </div>
       <button className="contact-marquee-close" type="button" aria-label="关闭跑马灯" onClick={() => setIsOpen(false)}>×</button>
@@ -389,7 +389,7 @@ function OpeningSplash({ onComplete }: { onComplete: () => void }) {
       onKeyDown={onKeyDown}
     >
       <div className="opening-splash-rings"><MagicRings speed={1.1} ringCount={7} /></div>
-      <span className="opening-splash-name">Shijun</span>
+      <span className="opening-splash-name">Shijun Peng</span>
     </div>
   );
 }
