@@ -351,7 +351,7 @@ function OpeningSplash({ onComplete }: { onComplete: () => void }) {
 
   useEffect(() => {
     document.body.classList.add("splash-open");
-    const autoEnterTimer = window.setTimeout(beginExit, 4500);
+    const autoEnterTimer = window.setTimeout(beginExit, 9500);
     return () => {
       window.clearTimeout(autoEnterTimer);
       document.body.classList.remove("splash-open");
@@ -381,8 +381,7 @@ function OpeningSplash({ onComplete }: { onComplete: () => void }) {
       onKeyDown={onKeyDown}
     >
       <div className="opening-splash-rings"><MagicRings speed={1.1} ringCount={7} /></div>
-      <span className="opening-splash-name">Shijun Peng</span>
-      <span className="opening-splash-enter">Enter</span>
+      <span className="opening-splash-name">Junshi Peng</span>
     </div>
   );
 }
