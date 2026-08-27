@@ -22,6 +22,15 @@ type ProjectMedia = {
 
 const projects: Project[] = [
   {
+    id: "hnh",
+    title: "Hnh",
+    year: "2026",
+    cover: "/portfolio/hnh/01.jpeg",
+    start: 0,
+    end: 0,
+    detailImages: ["/portfolio/hnh/01.jpeg", "/portfolio/hnh/02.jpeg"],
+  },
+  {
     id: "abitua",
     title: "Abitua",
     year: "2026",
@@ -44,10 +53,10 @@ const projects: Project[] = [
     id: "habc",
     title: "Habc",
     year: "2026",
-    cover: "/covers/habc.png?v=2",
+    cover: "/portfolio/habc/44.jpeg",
     start: 0,
     end: 0,
-    detailImages: ["/portfolio/habc/first.png", "/portfolio/habc/02.png", "/portfolio/habc/03.png", "/portfolio/habc/04.png", "/portfolio/habc/05.png", "/portfolio/habc/06.png", "/portfolio/habc/43.png"],
+    detailImages: ["/portfolio/habc/44.jpeg", "/portfolio/habc/45.jpeg", "/portfolio/habc/first.png", "/portfolio/habc/02.png", "/portfolio/habc/03.png", "/portfolio/habc/04.png", "/portfolio/habc/05.png", "/portfolio/habc/06.png", "/portfolio/habc/43.png"],
   },
   {
     id: "daartemis",
@@ -57,15 +66,6 @@ const projects: Project[] = [
     start: 18,
     end: 34,
     firstDetail: "/portfolio/daartemis/first.png",
-  },
-  {
-    id: "hnh",
-    title: "Hnh",
-    year: "2026",
-    cover: "/portfolio/hnh/01.jpeg",
-    start: 0,
-    end: 0,
-    detailImages: ["/portfolio/hnh/01.jpeg", "/portfolio/hnh/02.jpeg"],
   },
 ];
 
