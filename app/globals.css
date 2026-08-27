@@ -240,14 +240,15 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
 .profile-copy p { margin: 0; }
 .profile-intro span { display: block; }
 .info-contact { margin-top: 0; }
-.info-contact > p { margin-top: 12px; }
+.info-contact > p { margin: 0 0 12px; }
 .info-contact a { text-decoration: none; }
 .info-locations {
   width: min(320px, 100%);
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
-  margin-bottom: 12px;
+  margin-top: 12px;
+  margin-bottom: 0;
   font-size: 12px;
   line-height: 1.5;
 }
@@ -381,8 +382,8 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
   .profile-copy { gap: 46px; font-size: 12px; }
   .profile { padding-bottom: 46px; }
   .info-portrait { width: min(260px, 100%); margin-top: 0; }
-  .info-contact > p { margin-top: 10px; }
-  .info-locations { width: min(260px, 100%); gap: 16px; margin-bottom: 10px; }
+  .info-contact > p { margin: 0 0 10px; }
+  .info-locations { width: min(260px, 100%); gap: 16px; margin: 10px 0 0; }
 
   .project-details {
     padding: var(--section-gap) var(--page-gutter) 24px;

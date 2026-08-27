@@ -188,7 +188,7 @@ function InfoPage() {
             <span>I am well‑versed in AIGC‑driven creative workflows, and hold strong</span>
             <span>aesthetic acumen to produce comprehensive, high‑grade visual deliverables independently.</span>
           </p>
-          <div className="info-contact"><div className="info-locations"><p>(GZ)<br/>guangzhou panyu</p><p>(CS)<br/>changsha lugu</p></div><img className="info-portrait" src="/images/3333.jpg" alt="Shijun Peng portrait" /><p>VX 87080780<br/><a href="mailto:xxa8@163.com">EMAIL&nbsp;&nbsp;xxa8@163.com</a></p></div>
+          <div className="info-contact"><p>VX 87080780<br/><a href="mailto:xxa8@163.com">EMAIL&nbsp;&nbsp;xxa8@163.com</a></p><img className="info-portrait" src="/images/3333.jpg" alt="Shijun Peng portrait" /><div className="info-locations"><p>(GZ)<br/>guangzhou panyu</p><p>(CS)<br/>changsha lugu</p></div></div>
         </div>
       </section>
     </main>
