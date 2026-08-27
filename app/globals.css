@@ -208,6 +208,12 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
 .work-meta b { text-align: left; }
 .work-meta span { text-align: right; }
 
+@media (min-width: 1200px) {
+  .works-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 /* Info */
 .info-page,
 .profile { min-height: 0; background: #fff; }
