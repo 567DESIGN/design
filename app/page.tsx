@@ -6,6 +6,7 @@ type Project = {
   id: string;
   title: string;
   year: string;
+  homeService: string;
   cover: string;
   coverType?: "image" | "video";
   start: number;
@@ -25,6 +26,7 @@ const projects: Project[] = [
     id: "hnh",
     title: "Hnh",
     year: "2026",
+    homeService: "Product Design",
     cover: "/portfolio/hnh/01.jpeg",
     start: 0,
     end: 0,
@@ -34,6 +36,7 @@ const projects: Project[] = [
     id: "abitua",
     title: "Abitua",
     year: "2026",
+    homeService: "Brand Design",
     cover: "/portfolio/abitua/replacement-04.png",
     start: 3,
     end: 10,
@@ -43,6 +46,7 @@ const projects: Project[] = [
     id: "cremaish",
     title: "Cremaish",
     year: "2026",
+    homeService: "E-commerce Design",
     cover: "/portfolio/cremaish/video/03.mov",
     coverType: "video",
     start: 11,
@@ -53,6 +57,7 @@ const projects: Project[] = [
     id: "habc",
     title: "Habc",
     year: "2026",
+    homeService: "Brand Design",
     cover: "/portfolio/habc/44.jpeg",
     start: 0,
     end: 0,
@@ -62,6 +67,7 @@ const projects: Project[] = [
     id: "daartemis",
     title: "Daartemis",
     year: "2023-2025",
+    homeService: "Visual Design",
     cover: "/covers/daartemis.png?v=2",
     start: 18,
     end: 34,
@@ -211,7 +217,7 @@ function Home() {
                 )}
               </a>
               <a className="work-meta" href={`#project/${project.id}`}>
-                <b>{project.title.toLowerCase()}&nbsp;&nbsp;I&nbsp;&nbsp;{project.year}</b>
+                <b>{project.title.toLowerCase()}&nbsp;&nbsp;I&nbsp;&nbsp;{project.homeService}</b>
               </a>
             </article>
           ))}
