@@ -277,7 +277,7 @@ body.has-contact-marquee { padding-top: var(--marquee-height); }
   margin-left: auto;
   padding: var(--section-gap) 18px;
   display: grid;
-  grid-template-columns: 160px minmax(0, 1fr);
+  grid-template-columns: 360px minmax(0, 1fr);
   align-content: start;
   gap: 18px;
   background: #fff;
