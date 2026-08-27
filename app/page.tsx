@@ -68,7 +68,7 @@ const projects: Project[] = [
     title: "Daartemis",
     year: "2023-2025",
     homeService: "Visual Design",
-    cover: "/covers/daartemis-new.jpg",
+    cover: "/covers/daartemis-fixed.jpg",
     start: 18,
     end: 34,
     firstDetail: "/portfolio/daartemis/first.png",
