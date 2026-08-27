@@ -58,6 +58,15 @@ const projects: Project[] = [
     end: 34,
     firstDetail: "/portfolio/daartemis/first.png",
   },
+  {
+    id: "hnh",
+    title: "Hnh",
+    year: "2026",
+    cover: "/portfolio/hnh/01.jpeg",
+    start: 0,
+    end: 0,
+    detailImages: ["/portfolio/hnh/01.jpeg", "/portfolio/hnh/02.jpeg"],
+  },
 ];
 
 const imagePath = (project: Project, page: number) =>
@@ -90,6 +99,13 @@ const projectDetails: Record<string, { services: string[]; paragraphs: string[] 
     paragraphs: [
       "HABC 品牌视觉与辅料系统以简洁、轻盈和功能性为基础，建立适用于服装及配饰场景的统一品牌语言。",
       "通过专属字体、色彩、图形符号与包装应用规范，使品牌在不同物料中保持一致、清晰且易于延展的视觉表达。",
+    ],
+  },
+  hnh: {
+    services: ["四合扣图案设计"],
+    paragraphs: [
+      "HNH 四合扣图案设计以简洁的字母符号为核心，将品牌识别压印于金属扣面，在有限尺度中建立清晰、精致的视觉记忆。",
+      "通过正面结构、线条比例与金属质感的细节控制，使辅料在服装应用中保持克制、耐看且具有品牌辨识度。",
     ],
   },
 };
