@@ -183,10 +183,10 @@ function InfoPage() {
         <SiteNav label="Info navigation" />
         <div className="profile-copy">
           <p className="profile-intro">
-            <span>Boasting over 10 years of practical experience within visual design,</span>
-            <span>I excel at visual composition, layout design and project planning.</span>
-            <span>I am well‑versed in AIGC‑driven creative workflows, and hold strong</span>
-            <span>aesthetic acumen to produce comprehensive, high‑grade visual deliverables independently.</span>
+            <span>I combine graphic design, art direction, and AIGC</span>
+            <span>to create distinctive visual experiences for fashion brands—</span>
+            <span>because when anyone can generate images,</span>
+            <span>knowing what to create matters more.</span>
           </p>
           <div className="info-contact"><p>VX 87080780<br/><a href="mailto:xxa8@163.com">EMAIL&nbsp;&nbsp;xxa8@163.com</a></p><img className="info-portrait" src="/images/3333.jpg" alt="Shijun Peng portrait" /><div className="info-locations"><p>(GZ)<br/>guangzhou panyu</p><p>(CS)<br/>changsha lugu</p></div></div>
         </div>
@@ -418,38 +418,3 @@ function OpeningSplash({ onComplete }: { onComplete: () => void }) {
 export default function App() {
   const [hash, setHash] = useState(window.location.hash);
   const [showSplash, setShowSplash] = useState(true);
-  useEffect(() => {
-    const onHash = () => {
-      setHash(window.location.hash);
-      requestAnimationFrame(() => {
-        if (preservedScrollPosition) {
-          window.scrollTo(preservedScrollPosition.x, preservedScrollPosition.y);
-          preservedScrollPosition = null;
-          return;
-        }
-        if (window.location.hash.startsWith("#project/")) {
-          window.scrollTo({ top: 0, behavior: "instant" });
-        } else {
-          document.querySelector(window.location.hash || "#top")?.scrollIntoView();
-        }
-      });
-    };
-    window.addEventListener("hashchange", onHash);
-    onHash();
-    return () => window.removeEventListener("hashchange", onHash);
-  }, []);
-  const projectId = hash.startsWith("#project/") ? hash.slice(9) : "";
-  const project = projects.find((item) => item.id === projectId);
-  const page = project ? <ProjectPage project={project} /> : hash === "#info" ? <InfoPage /> : <Home />;
-  const footer = <footer className="site-footer"><p className="site-footer-copyright">© All rights Reserved by Shijun Peng work</p></footer>;
-  const enterHome = useCallback(() => {
-    window.history.replaceState(null, "", "#top");
-    setHash("#top");
-    setShowSplash(false);
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: "instant" }));
-    });
-  }, []);
-
-  return <>{showSplash && <OpeningSplash onComplete={enterHome} />}<ContactMarquee />{page}{footer}<BackToTopButton /><Analytics route={hash || "#top"} path={`${window.location.pathname}${hash || "#top"}`} /></>;
-}
