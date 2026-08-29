@@ -418,3 +418,38 @@ function OpeningSplash({ onComplete }: { onComplete: () => void }) {
 export default function App() {
   const [hash, setHash] = useState(window.location.hash);
   const [showSplash, setShowSplash] = useState(true);
+  useEffect(() => {
+    const onHash = () => {
+      setHash(window.location.hash);
+      requestAnimationFrame(() => {
+        if (preservedScrollPosition) {
+          window.scrollTo(preservedScrollPosition.x, preservedScrollPosition.y);
+          preservedScrollPosition = null;
+          return;
+        }
+        if (window.location.hash.startsWith("#project/")) {
+          window.scrollTo({ top: 0, behavior: "instant" });
+        } else {
+          document.querySelector(window.location.hash || "#top")?.scrollIntoView();
+        }
+      });
+    };
+    window.addEventListener("hashchange", onHash);
+    onHash();
+    return () => window.removeEventListener("hashchange", onHash);
+  }, []);
+  const projectId = hash.startsWith("#project/") ? hash.slice(9) : "";
+  const project = projects.find((item) => item.id === projectId);
+  const page = project ? <ProjectPage project={project} /> : hash === "#info" ? <InfoPage /> : <Home />;
+  const footer = <footer className="site-footer"><p className="site-footer-copyright">© All rights Reserved by Shijun Peng work</p></footer>;
+  const enterHome = useCallback(() => {
+    window.history.replaceState(null, "", "#top");
+    setHash("#top");
+    setShowSplash(false);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: "instant" }));
+    });
+  }, []);
+
+  return <>{showSplash && <OpeningSplash onComplete={enterHome} />}<ContactMarquee />{page}{footer}<BackToTopButton /><Analytics route={hash || "#top"} path={`${window.location.pathname}${hash || "#top"}`} /></>;
+}
